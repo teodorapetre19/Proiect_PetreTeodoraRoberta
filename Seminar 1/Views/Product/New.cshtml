@@ -1,0 +1,10 @@
+﻿@using Seminar_1.Models.VMs
+@model ProductVM
+
+@{
+    ViewData["Title"] = "Create a product";
+}
+
+@{ ViewBag.IsNew = true;}
+
+@await Html.PartialAsync(@"../Shared/Components/_Product.cshtml")

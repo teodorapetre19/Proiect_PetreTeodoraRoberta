@@ -1,0 +1,12 @@
+﻿@using Seminar_1.Models.VMs
+@model UserVM
+
+@{
+    ViewData["Title"] = "Edit a user";
+}
+
+@{
+    ViewBag.IsNew = false;
+}
+
+@await Html.PartialAsync(@"../Shared/Components/_User.cshtml")

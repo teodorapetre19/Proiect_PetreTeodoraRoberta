@@ -1,0 +1,159 @@
+﻿@using Seminar_1.Models.VMs
+@model ProductVM
+
+@{
+    string action = "";
+    var isNew = (bool)ViewBag.IsNew;
+    if (isNew)
+        action = "/Product/New";
+    else
+        action = string.Format("/Product/Edit/{0}", Model.Id);
+}
+
+<style>
+    /* New Styles */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f9f9f9;
+        color: #000;
+        margin-top: 30px;
+    }
+
+    .card-style {
+        border-radius: 15px;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        padding: 30px;
+    }
+
+    h4 {
+        color: #000;
+        font-weight: 600;
+        margin-bottom: 30px;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+    }
+
+    .btn-save {
+        padding: 12px 24px;
+        border-radius: 5px;
+        background-color: #6c5ce7;
+        color: #fff;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-save:hover {
+            background-color: #4a3cb1;
+        }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-top: 20px;
+        box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        font-weight: bold;
+        color: #000;
+    }
+
+    input[type='text'],
+    input[type='number'],
+    textarea {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        width: 100%;
+        transition: border-color 0.3s ease;
+    }
+
+        input[type='text']:focus,
+        input[type='number']:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #6c5ce7;
+        }
+
+    .custom-file-input {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        transition: border-color 0.3s ease;
+    }
+
+        .custom-file-input:focus {
+            outline: none;
+            border-color: #6c5ce7;
+        }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card-style">
+                <h4 class="mb-4">Product Information</h4>
+
+                <form action="@action" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <input asp-for="Id" hidden />
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Product Name</label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Price</label>
+                                <input asp-for="Price" class="form-control" />
+                                <span asp-validation-for="Price" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Is Available</label>
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="isAvailable" asp-for="IsAvailable">
+                                    <label class="custom-control-label" for="isAvailable"></label>
+                                </div>
+                                <span asp-validation-for="IsAvailable" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Description</label>
+                                @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = 5 })
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Product Image</label>
+                                <img src="~/@Model.ImagePath" alt="No image available" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Upload an Image</label>
+                                <input id="fileInput" type="file" asp-for="ProducImage" class="custom-file-input" onchange="Product.onChangeFile(event)" />
+                                
+                                <span asp-validation-for="ProducImage" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center mt-4">
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-save btn-block">Save Changes</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

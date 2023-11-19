@@ -1,0 +1,143 @@
+/* Navbar styles */
+.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+
+/* Links */
+a {
+    color: #4c51bf; /* Updated link color */
+    text-decoration: none; /* Remove default underline */
+    transition: color 0.3s ease; /* Smooth transition */
+}
+
+    a:hover {
+        color: #4338ca; /* Hover color */
+    }
+
+/* Primary Button */
+.btn-primary {
+    color: #fff;
+    background-color: #00c48c; /* Updated primary button color */
+    border-color: #00c48c;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+    .btn-primary:hover {
+        background-color: #00ab6b; /* Darker color on hover */
+        border-color: #00ab6b;
+    }
+
+/* Active Nav Pills */
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #00c48c;
+    border-color: #00c48c;
+}
+
+/* Sticky Footer */
+html {
+    font-size: 16px;
+}
+
+body {
+    margin-bottom: 60px;
+    
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f9fafb; /* Updated footer background color */
+    text-align: center;
+    line-height: 60px;
+    border-top: 1px solid #ddd; /* Add a subtle border on top */
+}
+
+/* Grid */
+.grid {
+    border: 1px solid #e2e8f0; /* Lighter border color */
+    background-color: #fff;
+    min-height: 5em;
+}
+
+/* New Buttons */
+.btn-new {
+    background: linear-gradient(to right, #02aab0, #00cdac); /* Gradient button color */
+    border-radius: 5px;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-outline-new {
+    color: #333;
+    border-color: transparent;
+}
+
+    .btn-outline-new:hover,
+    .btn-outline-new:focus {
+        color: #333;
+        background-color: transparent;
+        border-color: transparent;
+        box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.1);
+    }
+
+/* Delete Buttons */
+.btn-delete {
+    background-color: #f87171;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.btn-outline-delete {
+    color: #f87171;
+    border-color: #f87171;
+}
+
+    .btn-outline-delete:hover,
+    .btn-outline-delete:focus {
+        color: #f87171;
+        background-color: #fff;
+        border-color: #f87171;
+        box-shadow: 0 0 0 0.2rem rgba(248, 113, 113, 0.5);
+    }
+
+/* Table Hover */
+.table-hover tbody tr:hover td {
+    background-color: #f7fafc; /* Table row hover color */
+    color: #333;
+}
+
+/* Selected Table Row */
+.tableSelectedRow {
+    --bs-table-bg: #ffeda6 !important; /* Updated selected row background color */
+    --bs-table-striped-bg: #ffeda6 !important;
+    color: #333;
+}
+
+/* Modal Header */
+.modal-header {
+    color: #fff;
+    background-color: #00c48c;
+}
+
+    .modal-header .close {
+        color: #fff;
+        font-size: 2.2rem;
+    }
+
+/* Input Styles */
+/* Remove spinner in number input */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type='number'] {
+    -moz-appearance
+}
+

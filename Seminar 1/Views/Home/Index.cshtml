@@ -1,0 +1,95 @@
+﻿@using Seminar_1.Models.VMs
+@model List<ProductVM>
+
+@{
+    ViewData["Title"] = "Home Page";
+    var detailsRoute = "/Details/{0}";
+}
+
+<style>
+    /* New Styles */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f5f5f5;
+        color: #333;
+        margin-top: 50px;
+    }
+
+    .card {
+        border: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        border-radius: 10px;
+        overflow: hidden;
+        background: #fff;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
+
+    .card-img-top {
+        height: 300px;
+        object-fit: cover;
+    }
+
+    .card-body {
+        text-align: center;
+    }
+
+    .btn-primary {
+        background-color: #6c5ce7;
+        border-color: #6c5ce7;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+        border-radius: 20px;
+        padding: 8px 20px;
+    }
+
+        .btn-primary:hover {
+            background-color: #4834d4;
+            border-color: #4834d4;
+        }
+
+    .payment-section {
+        padding: 50px 0;
+        background-color: #fff;
+    }
+
+        .payment-section h2 {
+            color: #333;
+            font-weight: 600;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .payment-section p {
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+</style>
+
+<div class="container">
+    <div class="row">
+        @foreach (var productVM in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="~/@productVM.ImagePath" alt="Product Image">
+                    <div class="card-body">
+                        <h5 class="card-title">@productVM.Name</h5>
+                        <p class="card-text" style="color: #777;">Price: $@productVM.Price</p>
+                        <a href="@string.Format(detailsRoute, productVM.Id)" class="btn btn-primary btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="payment-section text-center">
+        <h2>Secure Payment Integration</h2>
+        <p>Make a quick and secure payment</p>
+        <a class="btn btn-primary btn-lg" href="/Home/PaymentWithPayPal">Pay Now</a>
+    </div>
+</div>

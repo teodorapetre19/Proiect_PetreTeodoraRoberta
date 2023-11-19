@@ -1,0 +1,128 @@
+﻿@using Seminar_1.Models.VMs
+@model UserVM
+
+@{
+    string action = "";
+    var isNew = (bool)ViewBag.IsNew;
+    if (isNew)
+        action = "/User/New";
+    else
+        action = string.Format("/User/Edit/{0}", Model.Id);
+}
+
+<style>
+    /* New Styles */
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f8f8;
+        color: #333;
+        margin-top: 30px;
+    }
+
+    .card-style {
+        border-radius: 15px;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        padding: 30px;
+    }
+
+    h4 {
+        color: #333;
+        font-weight: 600;
+        margin-bottom: 30px;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+    }
+
+    .btn-save {
+        padding: 12px 24px;
+        border-radius: 5px;
+        background-color: #6c5ce7;
+        color: #fff;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-save:hover {
+            background-color: #4a3cb1;
+        }
+
+    input[type='text'],
+    input[type='password'] {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        width: 100%;
+        transition: border-color 0.3s ease;
+    }
+
+        input[type='text']:focus,
+        input[type='password']:focus {
+            outline: none;
+            border-color: #6c5ce7;
+        }
+
+    .font-weight-bold {
+        font-weight: bold;
+        color: #6c5ce7;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card-style">
+                <h4>User Information</h4>
+
+                <form action="@action" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <input asp-for="Id" hidden />
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="font-weight-bold">Username</label>
+                                <input asp-for="UserName" class="form-control" />
+                                <span asp-validation-for="UserName" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="font-weight-bold">Password</label>
+                                <input asp-for="Password" class="form-control" type="password" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="font-weight-bold">Confirm Password</label>
+                                <input asp-for="ConfirmPassword" class="form-control" type="password" />
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="font-weight-bold">Surname</label>
+                                <input type="text" asp-for="SurName" class="form-control" />
+                                <span asp-validation-for="SurName" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="font-weight-bold">Firstname</label>
+                                <input type="text" asp-for="FirstName" class="form-control" />
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center mt-4">
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-save btn-block">Save Changes</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
